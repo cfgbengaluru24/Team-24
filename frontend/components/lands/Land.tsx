@@ -1,7 +1,7 @@
 import React from "react";
 import LandCard from "./LandCard";
 
-interface LandData {
+export interface LandData {
   Lands: string;
   Location: string;
   Density: number;
