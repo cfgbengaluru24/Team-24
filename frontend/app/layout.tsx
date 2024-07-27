@@ -15,7 +15,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Shola Ecosystem",
-  description: "Nextjs Starter with all modern tools",
+  description: "a ecosystem for the sholas",
 };
 
 export default function RootLayout({
