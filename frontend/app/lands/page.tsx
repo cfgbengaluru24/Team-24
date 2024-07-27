@@ -1,13 +1,7 @@
 import React from "react";
-
+import Land from "@/components/lands/Land";
 const page = () => {
-  return (
-    <div>
-      <div className="flex items-center">
-        <h1 className="text-lg font-semibold md:text-2xl">Lands</h1>
-      </div>
-    </div>
-  );
+  return <Land></Land>;
 };
 
 export default page;

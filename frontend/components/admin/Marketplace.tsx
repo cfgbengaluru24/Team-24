@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Activity, CreditCard, IndianRupee, Users } from "lucide-react";
+import MarketplaceChart from "./MarketplaceChart";
 
 const Marketplace = () => {
   return (
@@ -70,6 +71,7 @@ const Marketplace = () => {
           </CardContent>
         </Card>
       </div>
+      <MarketplaceChart></MarketplaceChart>
     </div>
   );
 };

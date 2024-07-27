@@ -1,4 +1,17 @@
 import React from "react";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "../ui/card";
+
+import { Button } from "../ui/button";
+import { ArrowUpRight, Link } from "lucide-react";
+import LineChart_Goals from "./LineChart_Goals";
+import { ChartContainer } from "@/components//ui/chart";
+import { Bar, BarChart, LabelList, XAxis, YAxis } from "recharts";
 
 const GoalCard = () => {
   return (
@@ -44,9 +57,7 @@ const GoalCard = () => {
             <Card className="max-w-xs" x-chunk="charts-01-chunk-6">
               <CardHeader className="p-4 pb-0">
                 <CardTitle>Lantana Removal</CardTitle>
-                <CardDescription>
-                  You're burning an average of 754 Lantana per day. Good job!
-                </CardDescription>
+                <CardDescription></CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col items-baseline gap-4 p-4 pt-2">
                 <div className="flex items-baseline gap-2 text-3xl font-bold tabular-nums leading-none">
