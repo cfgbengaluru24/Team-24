@@ -7,7 +7,9 @@ import {
   LandPlot,
   ChevronRight,
   ChevronLeft,
+  Grid2x2Check
 } from "lucide-react";
+
 import { Nav } from "@/components/Nav";
 import { Button } from "@/components/ui/button";
 
@@ -46,6 +48,12 @@ export default function Sidebar() {
             icon: LandPlot,
             variant: "default",
             href: "/lands",
+          },
+          {
+            title: "Logs",
+            icon: Grid2x2Check,
+            variant: "default",
+            href: "/logs",
           },
           {
             title: "about",

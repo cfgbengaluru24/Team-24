@@ -4,8 +4,10 @@ import Admin from "@/components/admin/Admin";
 
 export default function Page() {
   // return <Admin></Admin>;
-  return <main>
-    <Home />
-    <Admin />
-  </main>
+  return (
+    <main>
+      <Home />
+      <Admin />
+    </main>
+  );
 }

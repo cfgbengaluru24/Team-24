@@ -16,7 +16,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { toast } from "sonner";
-import { fetchRevHistory } from "@/lib/data"
+import { fetchRevHistory } from "@/lib/data";
 
 interface Data {
   month: string;
@@ -28,9 +28,9 @@ export default function RevHistStats() {
   const { isPending, error, data } = useQuery<Data[]>({
     queryKey: ["rev_history_stats"],
     queryFn: async () => {
-        const data= await fetchRevHistory();
-        return (data as Data).labourers;
-    }
+      const data = await fetchRevHistory();
+      return (data as Data).labourers;
+    },
   });
 
   if (isPending) {
@@ -42,7 +42,7 @@ export default function RevHistStats() {
   }
 
   return (
-    <Card>
+    <Card className="mt-5">
       <CardHeader>
         <CardTitle>Revenue Timeline</CardTitle>
       </CardHeader>
