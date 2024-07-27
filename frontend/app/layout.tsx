@@ -1,0 +1,68 @@
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { cn } from "@/lib/utils";
+import ThemeProvider from "@/contexts/ThemeProvider";
+import Sidebar from "@/components/Sidebar";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { Separator } from "@/components/ui/separator";
+import { Toaster } from "@/components/ui/sonner";
+import AuthProvider from "@/contexts/AuthProvider";
+import UserButton from "@/components/UserButton";
+import QueryProvider from "@/contexts/QueryProvider";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Nextjs Starter",
+  description: "Nextjs Starter with all modern tools",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body
+        className={cn("min-h-screen w-full bg-white flex", inter.className, {
+          "debug-screens": process.env.NODE_ENV === "development",
+        })}
+      >
+        <AuthProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {/* Sidebar */}
+            <Sidebar />
+            {/* Main Page */}
+            <div className="p-8 w-full bg-background text-foreground">
+              <div className="flex justify-between items-center mb-4">
+                <a href="/">
+                  <div className="flex items-center justify-center gap-4">
+                    <h1 className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-4xl">
+                      Nextjs Starter
+                    </h1>
+                  </div>
+                </a>
+                <div className="flex items-center space-x-2">
+                  <UserButton />
+                  <ThemeToggle />
+                </div>
+              </div>
+              <Separator />
+              <Toaster position="top-center" richColors />
+              <QueryProvider>
+                <div className="mt-2 p-4">{children}</div>
+              </QueryProvider>
+            </div>
+          </ThemeProvider>
+        </AuthProvider>
+      </body>
+    </html>
+  );
+}
