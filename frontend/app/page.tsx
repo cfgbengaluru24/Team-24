@@ -1,4 +1,3 @@
-import LruSignIn from "@/components/lru/LruSignIn";
 import Image from "next/image";
 
 export default function Home() {
