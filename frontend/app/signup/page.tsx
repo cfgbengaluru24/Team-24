@@ -1,29 +1,21 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
-import Link from "next/link"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { signIn } from "next-auth/react"
-import { redirect } from "next/navigation"
-
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+import Link from "next/link";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { signIn } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 export default function page() {
-  const signup = async (formData: FormData) => {
-    "use server"
-
-    const username = formData.get("username") as string
-    const email = formData.get("email") as string
-    const password = formData.get("password") as string
-
-    if(!username || !email || !password) 
-      // return new Error("Please fill in all fields")
-      redirect("/signup")
-
-    // db logic
-    redirect("/signin")
-  }
   return (
-    <form action={signup} className="flex justify-center items-center mt-12">
+    <div className="flex justify-center items-center mt-12">
       <Card className="w-full max-w-sm">
         <CardHeader className="space-y-1 text-center">
           <CardTitle className="text-2xl">Create an account</CardTitle>
@@ -35,17 +27,16 @@ export default function page() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="name">Name</Label>
-            <Input id="name" placeholder="Enter your name" name="username" required />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="m@example.com" name="email" required />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
-            <Input id="password" type="password" name="password" required />
+          <div className="flex flex-col items-center justify-center">
+            <Label htmlFor="name">Select your role</Label>
+            <div className="mt-5 flex flex-row gap-4">
+              <Link href="/signup/admin" className="underline" prefetch={false}>
+                <Button variant={"outline"}> Admin </Button>
+              </Link>
+              <Link href="/signup/lru" className="underline" prefetch={false}>
+                <Button variant={"outline"}> LRU </Button>
+              </Link>
+            </div>
           </div>
         </CardContent>
         <CardFooter>
@@ -54,6 +45,6 @@ export default function page() {
           </Button>
         </CardFooter>
       </Card>
-    </form>
-  )
+    </div>
+  );
 }

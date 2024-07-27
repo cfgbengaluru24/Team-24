@@ -14,8 +14,8 @@ import QueryProvider from "@/contexts/QueryProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Nextjs Starter",
-  description: "Nextjs Starter with all modern tools",
+  title: "Shola Ecosystem",
+  description: "a ecosystem for the sholas",
 };
 
 export default function RootLayout({
@@ -28,15 +28,13 @@ export default function RootLayout({
       <body
         className={cn("min-h-screen w-full bg-white flex", inter.className, {
           "debug-screens": process.env.NODE_ENV === "development",
-        })}
-      >
+        })}>
         <AuthProvider>
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             enableSystem
-            disableTransitionOnChange
-          >
+            disableTransitionOnChange>
             {/* Sidebar */}
             <Sidebar />
             {/* Main Page */}
