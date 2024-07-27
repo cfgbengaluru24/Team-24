@@ -45,7 +45,7 @@ export default function RootLayout({
                 <a href="/">
                   <div className="flex items-center justify-center gap-4">
                     <h1 className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-4xl">
-                      Nextjs Starter
+                      Shola Ecosystem
                     </h1>
                   </div>
                 </a>

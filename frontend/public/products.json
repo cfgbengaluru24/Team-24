@@ -1,0 +1,60 @@
+[
+    {
+      "id": 1,
+      "name": "Jute Bag 1",
+      "image": "https://5.imimg.com/data5/IOS/Default/2022/3/OH/EH/ZI/102579407/product-jpeg.png",
+      "price": 19.99,
+      "vendor": "Vendor A"
+    },
+    {
+      "id": 2,
+      "name": "Jute Bag 2",
+      "image": "https://4.imimg.com/data4/GI/JJ/MY-20626753/1-500x500.jpg",
+      "price": 29.99,
+      "vendor": "Vendor B"
+    },
+    {
+      "id": 3,
+      "name": "Jute Bag 3",
+      "image": "https://5.imimg.com/data5/CS/HA/OK/SELLER-91421348/jute-bag-500x500.JPG",
+      "price": 24.99,
+      "vendor": "Vendor C"
+    },
+    {
+      "id": 4,
+      "name": "Jute Bag 4",
+      "image": "https://5.imimg.com/data5/PT/XS/IM/SELLER-91903194/jute-carrying-bag.jpeg",
+      "price": 34.99,
+      "vendor": "Vendor D"
+    },
+    {
+      "id": 5,
+      "name": "Jute Bag 5",
+      "image": "https://5.imimg.com/data5/PT/XS/IM/SELLER-91903194/jute-carrying-bag.jpeg",
+      "price": 39.99,
+      "vendor": "Vendor E"
+    },
+    {
+        "id": 6,
+        "name": "Jute Bag 3",
+        "image": "https://5.imimg.com/data5/CS/HA/OK/SELLER-91421348/jute-bag-500x500.JPG",
+        "price": 24.99,
+        "vendor": "Vendor C"
+      },
+      {
+        "id": 7,
+        "name": "Jute Bag 4",
+        "image": "https://5.imimg.com/data5/PT/XS/IM/SELLER-91903194/jute-carrying-bag.jpeg",
+        "price": 34.99,
+        "vendor": "Vendor D"
+      },
+      {
+        "id": 8,
+        "name": "Jute Bag 5",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRE967kBc1UoCwl_mkbCtjUvS7PKwJ72HthA&s",
+        "price": 39.99,
+        "vendor": "Vendor E"
+      }
+  ]
+  
+  
