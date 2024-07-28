@@ -28,14 +28,12 @@ export default function LoginForm() {
 
         const toastId = toast.loading("Signing in...");
 
-        const error = await credentialsLogin(email, password);
-        // if (error === "Invalid email or password") {
-        //   toast.error("Invalid email or password", { id: toastId });
-        // } else {
-        //   toast.success("Signed in successfully", { id: toastId });
-        //   router.push("/home");
-        // }
-        toast.info("Please wait...", { id: toastId });
+        const msg = await credentialsLogin(email, password);
+        if(msg.error) {
+          toast.error(msg.error, { id: toastId });
+          return;
+        }
+        toast.success("Signed in successfully", { id: toastId });
         router.push("/home");
       }}
       className="flex justify-center items-center mt-12"

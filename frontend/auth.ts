@@ -1,6 +1,9 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { NextAuthConfig } from "next-auth";
+import clientPromise from "./lib/mongodb";
+
+
 
 export const authConfig: NextAuthConfig = {
   providers: [
@@ -12,12 +15,13 @@ export const authConfig: NextAuthConfig = {
       authorize: async (credentials, req) => {
         const email = credentials?.email as string;
         const password = credentials?.password as string;
-        const user = {
-          username: "test",
-          email: email,
-          password: password,
+        const client = await clientPromise;
+        const db = client.db("shola");
+        const res = await db.collection("users").findOne({ email });
+        if (res && res.password === password) {
+          return res;
         }
-        return user;
+        return null;
       },
     }),
   ],
@@ -26,6 +30,9 @@ export const authConfig: NextAuthConfig = {
       // console.log("jwt callback");
       if (user) {
         token.username = user?.username;
+        token.email = user?.email;
+        token.role = user?.role;
+        token.isApproved = user?.isApproved;
       }
       return token;
     },
@@ -33,6 +40,9 @@ export const authConfig: NextAuthConfig = {
       // console.log("session callback");
       if (token) {
         session.user.username = token.username as string | undefined;
+        session.user.email = token.email as string;
+        session.user.role = token.role as string | undefined;
+        session.user.isApproved = token.isApproved as boolean
       }
 
       return session;
