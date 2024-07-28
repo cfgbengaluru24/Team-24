@@ -1,16 +1,28 @@
-import React from 'react'
-import LabHistStats from './charts/LabHistory'
-import RevHistStats from './charts/RevenueHistory'
-import MarketPlace from './charts/MarketPlace'
+"use client";
+import React from "react";
+import LabHistStats from "./charts/LabHistory";
+import RevHistStats from "./charts/RevenueHistory";
+import MarketPlace from "./charts/MarketPlace";
+import LruDashboard from "./LruDashboard";
+import { useState, useEffect } from "react";
+
+export const useIsMounted = () => {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  return isMounted;
+};
 
 export default function Home() {
   return (
     <div>
-        <div className='grid grid-cols-2 gap-4 mb-5 justify-center items-center'>
+      <div>
+        <LruDashboard />
+      </div>
+      <div className="mb-5 justify-center items-center">
         <LabHistStats />
-        <RevHistStats />
-        </div>
-        <MarketPlace />
+      </div>
     </div>
-  )
+  );
 }

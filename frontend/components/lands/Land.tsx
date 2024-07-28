@@ -2,6 +2,8 @@ import React from "react";
 import LandCard from "./LandCard";
 
 export interface LandData {
+  id: string;
+  AvgProductionOfLantana: number;
   Lands: string;
   Location: string;
   Density: number;
@@ -14,8 +16,10 @@ export interface LandData {
   Distribution: number[];
 }
 
-const data: LandData[] = [
+export const data: LandData[] = [
   {
+    id: "1",
+    AvgProductionOfLantana: 45,
     Lands: "Telangana",
     Location: "17.4065,78.4772",
     Density: 13,
@@ -28,6 +32,8 @@ const data: LandData[] = [
     Distribution: [14, 29, 8, 37, 12],
   },
   {
+    id: "2",
+    AvgProductionOfLantana: 38,
     Lands: "Karnataka",
     Location: "12.2958,76.6394",
     Density: 53,
@@ -40,6 +46,8 @@ const data: LandData[] = [
     Distribution: [37, 14, 3, 7, 39],
   },
   {
+    id: "3",
+    AvgProductionOfLantana: 67,
     Lands: "Telangana",
     Location: "18.6725,78.0941",
     Density: 12,
@@ -52,6 +60,8 @@ const data: LandData[] = [
     Distribution: [19, 9, 23, 35, 14],
   },
   {
+    id: "4",
+    AvgProductionOfLantana: 98,
     Lands: "Kerala",
     Location: "11.2588,75.7804",
     Density: 72,
@@ -64,6 +74,8 @@ const data: LandData[] = [
     Distribution: [9, 28, 23, 5, 35],
   },
   {
+    id: "5",
+    AvgProductionOfLantana: 56,
     Lands: "Telangana",
     Location: "17.4065,78.4772",
     Density: 66,
@@ -76,6 +88,8 @@ const data: LandData[] = [
     Distribution: [18, 27, 41, 13, 1],
   },
   {
+    id: "6",
+    AvgProductionOfLantana: 45,
     Lands: "Karnataka",
     Location: "12.9141,74.8560",
     Density: 37,
@@ -88,6 +102,8 @@ const data: LandData[] = [
     Distribution: [34, 11, 26, 27, 2],
   },
   {
+    id: "7",
+    AvgProductionOfLantana: 78,
     Lands: "Karnataka",
     Location: "12.9716,77.5946",
     Density: 55,
@@ -100,6 +116,8 @@ const data: LandData[] = [
     Distribution: [19, 27, 8, 41, 5],
   },
   {
+    id: "8",
+    AvgProductionOfLantana: 67,
     Lands: "Karnataka",
     Location: "12.9716,77.5946",
     Density: 46,
@@ -112,6 +130,8 @@ const data: LandData[] = [
     Distribution: [25, 6, 33, 14, 22],
   },
   {
+    id: "9",
+    AvgProductionOfLantana: 34,
     Lands: "Andhra Pradesh",
     Location: "16.3067,80.4365",
     Density: 29,
@@ -124,6 +144,8 @@ const data: LandData[] = [
     Distribution: [16, 14, 49, 16, 5],
   },
   {
+    id: "10",
+    AvgProductionOfLantana: 23,
     Lands: "Tamil Nadu",
     Location: "13.0843,80.2705",
     Density: 96,
