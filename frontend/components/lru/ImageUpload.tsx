@@ -67,7 +67,7 @@ export default function ImageUploadForm() {
       <CardHeader>
         <CardTitle>Image Upload</CardTitle>
         <CardDescription>
-          Upload images for flower species prediction
+          Upload images for lantana species prediction
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -99,9 +99,7 @@ export default function ImageUploadForm() {
         {prediction !== null && (
           <Alert className="mt-4">
             <AlertTitle>Prediction Result</AlertTitle>
-            <AlertDescription>
-              {prediction}% of images were predicted as class 1.
-            </AlertDescription>
+            <AlertDescription>Density {prediction}%</AlertDescription>
           </Alert>
         )}
         {error && (

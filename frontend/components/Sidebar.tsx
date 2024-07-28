@@ -105,6 +105,12 @@ export default function Sidebar({ session }: { session: any }) {
               href: "/lands",
             },
             {
+              title: "identify",
+              icon: FlaskConical,
+              variant: "default",
+              href: "/identify",
+            },
+            {
               title: "Logs",
               icon: Grid2x2Check,
               variant: "default",

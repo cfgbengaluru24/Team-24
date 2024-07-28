@@ -1,3 +1,4 @@
+"use client";
 import {
   Card,
   CardContent,
@@ -69,7 +70,9 @@ const LruDashboard = () => {
   return (
     <div>
       <div className="flex flex-row-reverse ml-100">
-        <h1 className="text-3xl font-bold mb-4">Next Checkup in: {seconds} s</h1>
+        <h1 className="text-3xl font-bold mb-4">
+          Next Checkup in: {seconds} s
+        </h1>
         <ToastContainer />
       </div>
       <div className="flex justify-center items-center min-h-screen p-4">
@@ -129,8 +132,7 @@ const LruDashboard = () => {
             <MapContainer
               center={position}
               zoom={10}
-              style={{ height: "100%", width: "100%" }}
-            >
+              style={{ height: "100%", width: "100%" }}>
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
