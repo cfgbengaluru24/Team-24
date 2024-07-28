@@ -50,6 +50,12 @@ const links = {
       href: "/lands",
     },
     {
+      title: "Logs",
+      icon: Grid2x2Check,
+      variant: "default",
+      href: "/logs",
+    },
+    {
       title: "identify",
       icon: FlaskConical,
       variant: "default",
