@@ -1,19 +1,17 @@
 "use client";
-import React, { useState, ChangeEvent, FormEvent, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { MicIcon, PlusSquare, SendIcon } from "lucide-react";
 import { Textarea } from "../ui/textarea";
+import { useToast } from "../ui/use-toast";
+import { MicIcon, PlusSquare, SendIcon } from "lucide-react";
 
 interface FormData {
   date: string;
@@ -56,29 +54,11 @@ const ExperimentalDialog = () => {
     remarks: "",
   });
 
-  const [currentStep, setCurrentStep] = useState(1);
   const [listening, setListening] = useState(false);
   const [capturedText, setCapturedText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
   const recognitionRef = useRef<SpeechRecognition | null>(null);
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
-  };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    // Add your form submission logic here
-    console.log(formData);
-  };
-
-  const handleNext = () => {
-    setCurrentStep((prevStep) => prevStep + 1);
-  };
-
-  const handleBack = () => {
-    setCurrentStep((prevStep) => prevStep - 1);
-  };
 
   const startListening = () => {
     if (!("webkitSpeechRecognition" in window)) {
@@ -96,29 +76,47 @@ const ExperimentalDialog = () => {
     recognition.onstart = () => {
       setListening(true);
     };
-
-    recognition.onresult = (event: SpeechRecognitionEvent) => {
-      const transcript = event.results[0][0].transcript;
-      setCapturedText(transcript);
-      setListening(false);
-
-      // Send the captured text to the LLM API
-      fetch("/api/analyze-text", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ text: transcript }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Analyzed data:", data);
-          // Display the result in the dialog or update the state
-        })
-        .catch((error) => {
-          console.error("Error:", error);
+    const apiKey = process.env.GEMINI_API_KEY;
+    try {
+      recognition.onresult = async (event: SpeechRecognitionEvent) => {
+        const transcript = event.results[0][0].transcript;
+        setCapturedText(transcript);
+        setListening(false);
+        setIsLoading(true);
+        // Send the captured text to the LLM API
+        const response = await fetch("/api/gemini", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ apiKey, text: transcript }),
         });
-    };
+        if (!response.ok) {
+          toast({
+            title: "Uh oh! Something went wrong.",
+            description: "There was a problem with your request.",
+          });
+          console.log(response);
+        }
+
+        const data = await response.json();
+        console.log(data);
+        // Update the formData with the data received from LLM
+        if (data && data.labels && data.labels[0]) {
+          const parsedData = JSON.parse(data.labels[0]);
+          setFormData(parsedData);
+          saveLogToLocalStorage(parsedData);
+        }
+      };
+    } catch (error) {
+      console.error("Error:", error);
+      toast({
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
 
     recognition.onerror = (event: any) => {
       console.error("Speech recognition error", event.error);
@@ -130,6 +128,16 @@ const ExperimentalDialog = () => {
     };
 
     recognition.start();
+  };
+
+  const saveLogToLocalStorage = (logData: FormData) => {
+    const existingLogs = JSON.parse(localStorage.getItem("logs") || "[]");
+    existingLogs.push(logData);
+    localStorage.setItem("logs", JSON.stringify(existingLogs));
+    toast({
+      title: "Log saved",
+      description: "The log entry has been saved to local storage.",
+    });
   };
 
   return (
