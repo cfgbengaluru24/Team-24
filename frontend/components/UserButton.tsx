@@ -22,7 +22,7 @@ export default async function UserButton() {
   return (
     <div className="flex gap-2 items-center">
       <span className="hidden text-sm sm:inline-flex">
-        {`Welcome, ${session.user?.username}`}
+        {`Welcome, ${session.user?.name}`}
       </span>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

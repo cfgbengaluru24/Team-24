@@ -1,22 +1,28 @@
 "use server";
 import { signIn } from "@/auth";
 import { CredentialsSignin } from "next-auth";
-import { redirect } from 'next/navigation';
+import { redirect } from "next/navigation";
 
 const credentialsLogin = async (email: string, password: string) => {
   try {
     const res = await signIn("credentials", {
       email,
       password,
-      redirectTo: "/home",
+      redirect: false,
     });
-    redirect("/home");
-    return res;
+    console.log(res);
+
+    return {
+      ok: true,
+      error: null,
+    };
   } catch (error: any) {
     const err = error as CredentialsSignin;
-    return "Invalid email or password"
+    return {
+      ok: false,
+      error: "Invalid credentials. Please try again.",
+    };
   }
 };
-
 
 export default credentialsLogin;
