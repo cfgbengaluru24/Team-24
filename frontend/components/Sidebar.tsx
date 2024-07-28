@@ -8,6 +8,7 @@ import {
   ChevronRight,
   ChevronLeft,
   FlaskConical,
+  Grid2x2Check,
 } from "lucide-react";
 
 import { Nav } from "@/components/Nav";
@@ -15,7 +16,7 @@ import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
 
 const links = {
-  "admin": [
+  admin: [
     {
       title: "dashboard",
       icon: Home,
@@ -35,7 +36,7 @@ const links = {
       href: "https://github.com/cfgbengaluru24/Team-24",
     },
   ],
-  "lru": [
+  lru: [
     {
       title: "dashboard",
       icon: Home,
@@ -60,11 +61,11 @@ const links = {
       variant: "default",
       href: "https://github.com/cfgbengaluru24/Team-24",
     },
-  ]
-}
+  ],
+};
 
 export default function Sidebar({ session }: { session: any }) {
-  console.log(session);  
+  console.log(session);
   const [isCollapsed, setIsCollapsed] = useState(true);
   return (
     <div className="relative min-w-[80px] border-r px-3 pb-10 pt-24 bg-background text-foreground">
@@ -85,44 +86,39 @@ export default function Sidebar({ session }: { session: any }) {
           )}
         </Button>
       </div>
-      {
-        session ? (
-          <Nav
-        isCollapsed={isCollapsed}
-        links={links[session?.user.role]}
-      />
-        ) : (
-          <Nav
-        isCollapsed={isCollapsed}
-        links={[
-          {
-            title: "dashboard",
-            icon: Home,
-            variant: "default",
-            href: "/home",
-          },
-          {
-            title: "Lands",
-            icon: LandPlot,
-            variant: "default",
-            href: "/lands",
-          },
-          {
-            title: "Logs",
-            icon: Grid2x2Check,
-            variant: "default",
-            href: "/logs",
-          },
-          {
-            title: "about",
-            icon: Github,
-            variant: "default",
-            href: "https://github.com/cfgbengaluru24/Team-24",
-          },
-        ]}
-      />
-        )
-      }
+      {session ? (
+        <Nav isCollapsed={isCollapsed} links={links[session?.user.role]} />
+      ) : (
+        <Nav
+          isCollapsed={isCollapsed}
+          links={[
+            {
+              title: "dashboard",
+              icon: Home,
+              variant: "default",
+              href: "/home",
+            },
+            {
+              title: "Lands",
+              icon: LandPlot,
+              variant: "default",
+              href: "/lands",
+            },
+            {
+              title: "Logs",
+              icon: Grid2x2Check,
+              variant: "default",
+              href: "/logs",
+            },
+            {
+              title: "about",
+              icon: Github,
+              variant: "default",
+              href: "https://github.com/cfgbengaluru24/Team-24",
+            },
+          ]}
+        />
+      )}
     </div>
   );
 }
