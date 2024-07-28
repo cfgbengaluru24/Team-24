@@ -4,7 +4,7 @@ export const marketData=[
           "Laborers": "Prisha, Aarohi, Ishita, Kabir, Myra, Advait",
           "Total Land (units)": 7,
           "Average Production Per Day": 43.16447368,
-          "Sells": "Raw",
+          "Sells": "Biomass",
           "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR593axs3I96NNUSTcnmZNGG_Ko0OEbDNrGPw&s",
           "price": 25.99,
           "vendor": "Rajesh Kumar"
@@ -24,7 +24,7 @@ export const marketData=[
           "Laborers": "Avni, Rudra, Anvi, Arjun",
           "Total Land (units)": 15,
           "Average Production Per Day": 28.50993377,
-          "Sells": "Raw",
+          "Sells": "Biomass",
           "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR593axs3I96NNUSTcnmZNGG_Ko0OEbDNrGPw&s",
           "price": 30.49,
           "vendor": "Anil Verma"
@@ -84,7 +84,7 @@ export const marketData=[
           "Laborers": "Aadhya, Arnav, Raghav, Aarav, Ishaan, Dev, Sara",
           "Total Land (units)": 6,
           "Average Production Per Day": 52.01973684,
-          "Sells": "Raw",
+          "Sells": "Biomass",
           "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR593axs3I96NNUSTcnmZNGG_Ko0OEbDNrGPw&s",
           "price": 22.79,
           "vendor": "Geeta Joshi"

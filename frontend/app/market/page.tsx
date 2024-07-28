@@ -61,7 +61,7 @@ export default function Home() {
             <div className="p-4">
               <h2 className="text-xl font-semibold text-brown-800">{product.Sells}</h2>
               <p className="text-gray-600">Price: INR {product.price}</p>
-              <p className="text-gray-600">Vendor: {product.vendor}</p>
+              <p className="text-gray-600">Seller: {product.vendor}</p>
               <button
                 className="mt-2 bg-green-500 text-white py-1 px-2 rounded"
                 onClick={() => addToCart({
