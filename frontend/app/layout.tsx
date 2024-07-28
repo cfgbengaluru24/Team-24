@@ -11,6 +11,7 @@ import AuthProvider from "@/contexts/AuthProvider";
 import UserButton from "@/components/UserButton";
 import QueryProvider from "@/contexts/QueryProvider";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
