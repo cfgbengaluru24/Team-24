@@ -2,3 +2,7 @@ node_modules
 .next
 .env
 Team-24
+Include
+Lib
+Scripts
+pyvenv.cfg

@@ -32,10 +32,6 @@ const chartConfig = {
     label: "Desktop",
     color: "white",
   },
-  mobile: {
-    label: "Mobile",
-    color: "hsl(var(--chart-2))",
-  },
 } satisfies ChartConfig;
 
 const LruDashboard = () => {
@@ -53,7 +49,7 @@ const LruDashboard = () => {
     { val: "Im", desktop: land?.Distribution[4] },
   ];
 
-  const [seconds, setSeconds] = useState(10);
+  const [seconds, setSeconds] = useState(5);
 
   useEffect(() => {
     if (seconds > 0) {
@@ -62,7 +58,7 @@ const LruDashboard = () => {
       }, 1000);
       return () => clearInterval(timerId);
     } else {
-      setSeconds(10);
+      setSeconds(5);
       toast(
         `Reminder: Time is up! Have a Check on Restoration Status in ${land?.City}`
       );
