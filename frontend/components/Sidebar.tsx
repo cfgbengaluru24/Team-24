@@ -7,11 +7,64 @@ import {
   LandPlot,
   ChevronRight,
   ChevronLeft,
+  FlaskConical,
 } from "lucide-react";
+
 import { Nav } from "@/components/Nav";
 import { Button } from "@/components/ui/button";
+import { useSession } from "next-auth/react";
 
-export default function Sidebar() {
+const links = {
+  "admin": [
+    {
+      title: "dashboard",
+      icon: Home,
+      variant: "default",
+      href: "/home",
+    },
+    {
+      title: "Lands",
+      icon: LandPlot,
+      variant: "default",
+      href: "/lands",
+    },
+    {
+      title: "about",
+      icon: Github,
+      variant: "default",
+      href: "https://github.com/cfgbengaluru24/Team-24",
+    },
+  ],
+  "lru": [
+    {
+      title: "dashboard",
+      icon: Home,
+      variant: "default",
+      href: "/home",
+    },
+    {
+      title: "Lands",
+      icon: LandPlot,
+      variant: "default",
+      href: "/lands",
+    },
+    {
+      title: "identify",
+      icon: FlaskConical,
+      variant: "default",
+      href: "/identify",
+    },
+    {
+      title: "about",
+      icon: Github,
+      variant: "default",
+      href: "https://github.com/cfgbengaluru24/Team-24",
+    },
+  ]
+}
+
+export default function Sidebar({ session }: { session: any }) {
+  console.log(session);  
   const [isCollapsed, setIsCollapsed] = useState(true);
   return (
     <div className="relative min-w-[80px] border-r px-3 pb-10 pt-24 bg-background text-foreground">
@@ -32,7 +85,14 @@ export default function Sidebar() {
           )}
         </Button>
       </div>
-      <Nav
+      {
+        session ? (
+          <Nav
+        isCollapsed={isCollapsed}
+        links={links[session?.user.role]}
+      />
+        ) : (
+          <Nav
         isCollapsed={isCollapsed}
         links={[
           {
@@ -48,13 +108,21 @@ export default function Sidebar() {
             href: "/lands",
           },
           {
+            title: "Logs",
+            icon: Grid2x2Check,
+            variant: "default",
+            href: "/logs",
+          },
+          {
             title: "about",
             icon: Github,
             variant: "default",
-            href: "https://github.com/ankush-003",
+            href: "https://github.com/cfgbengaluru24/Team-24",
           },
         ]}
       />
+        )
+      }
     </div>
   );
 }

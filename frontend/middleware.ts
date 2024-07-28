@@ -23,7 +23,7 @@ export const config = {
     matcher: [
         // '/sign-in',
         // '/sign-up',
-        '/home',
+        // '/home',
         // '/about',
         // '/url',
         // '/url/:path*',

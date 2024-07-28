@@ -10,6 +10,7 @@ import { Toaster } from "@/components/ui/sonner";
 import AuthProvider from "@/contexts/AuthProvider";
 import UserButton from "@/components/UserButton";
 import QueryProvider from "@/contexts/QueryProvider";
+import { auth } from "@/auth";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,11 +20,12 @@ export const metadata: Metadata = {
   description: "a ecosystem for the sholas",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
   return (
     <html lang="en">
       <body
@@ -37,7 +39,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange>
             {/* Sidebar */}
-            <Sidebar />
+            <Sidebar session={session} />
             {/* Main Page */}
             <div className="p-8 w-full bg-background text-foreground">
               <div className="flex justify-between items-center mb-4">
